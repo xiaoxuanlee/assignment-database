@@ -180,42 +180,42 @@ describe("User Account", () => {
 			expect(res).toBe("User does not exist")
 		});
 
-		// test("Delete user", async () => {
+		test("Delete user", async () => {
 			
-		// 	const res = await User.deleteuser("test75")
-		// 	expect(res).toBe("User deleted")
-		// });
+			const res = await User.deleteuser("test75")
+			expect(res).toBe("User deleted")
+		});
 
 
-		// test("Delete user unsuccessful", async () => {
+		test("Delete user unsuccessful", async () => {
 			
-		// 	const res = await User.deleteuser("test2455")
-		// 	expect(res).toBe("User does not exist")
-		// });
+			const res = await User.deleteuser("test2455")
+			expect(res).toBe("User does not exist")
+		});
 
-		// test("Delete admin", async () => {
+		test("Delete admin", async () => {
 			
-		// 	const res = await User.deleteadmin("test75")
-		// 	expect(res).toBe("Admin deleted")
-		// });
+			const res = await User.deleteadmin("test75")
+			expect(res).toBe("Admin deleted")
+		});
 
-		// test("Delete admin unsuccessful", async () => {
+		test("Delete admin unsuccessful", async () => {
 			
-		// 	const res = await User.deleteadmin("test123")
-		// 	expect(res).toBe("Admin does not exist")
-		// });
+			const res = await User.deleteadmin("test123")
+			expect(res).toBe("Admin does not exist")
+		});
 
-		// test("Delete worker", async () => {
+		test("Delete worker", async () => {
 			
-		// 	const res = await User.deleteworker("test75")
-		// 	expect(res).toBe("Worker deleted")
-		// });
+			const res = await User.deleteworker("test75")
+			expect(res).toBe("Worker deleted")
+		});
 
-		// test("Delete worker unsuccessful", async () => {
+		test("Delete worker unsuccessful", async () => {
 			
-		// 	const res = await User.deleteworker("test123")
-		// 	expect(res).toBe("Worker does not exist")
-		// });
+			const res = await User.deleteworker("test123")
+			expect(res).toBe("Worker does not exist")
+		});
 
 		
 	
