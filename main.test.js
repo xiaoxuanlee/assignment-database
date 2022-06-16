@@ -246,82 +246,82 @@ describe('Express Route Test', function () {
 	}
 	)
 
-	// it("delete user", async () => {
-	// 	return request
-	// 	.delete("/deleteuser")
-	// 	.set("authorization", token_user)
-	// 	.send({username:"test23456"})
-	// 	.expect(200).then(response => {
-	// 		expect(response.text).toEqual(
-	// 			expect.any(String)
-	// 		);
-	// 	});
-	// }
-	// )
+	it("delete user", async () => {
+		return request
+		.delete("/deleteuser")
+		.set("authorization", token_user)
+		.send({username:"test23456"})
+		.expect(200).then(response => {
+			expect(response.text).toEqual(
+				expect.any(String)
+			);
+		});
+	}
+	)
 
-	// it("delete user failed", async () => {
-	// 	return request
-	// 	.delete("/deleteuser")
-	// 	.set("authorization", token_user)
-	// 	.send({username:"test1"})
-	// 	.expect(401).then(response => {
-	// 		expect(response.text).toEqual(
-	// 			expect.any(String)
-	// 		);
-	// 	});
-	// }
-	// )
+	it("delete user failed", async () => {
+		return request
+		.delete("/deleteuser")
+		.set("authorization", token_user)
+		.send({username:"test1"})
+		.expect(401).then(response => {
+			expect(response.text).toEqual(
+				expect.any(String)
+			);
+		});
+	}
+	)
 
-	// it("delete worker", async () => {
-	// 	return request
-	// 	.delete("/deleteworker")
-	// 	.set("authorization", token_user)
-	// 	.send({username:"test23456"})
-	// 	.expect(200).then(response => {
-	// 		expect(response.text).toEqual(
-	// 			expect.any(String)
-	// 		);
-	// 	});
-	// }
-	// )
+	it("delete worker", async () => {
+		return request
+		.delete("/deleteworker")
+		.set("authorization", token_user)
+		.send({username:"test23456"})
+		.expect(200).then(response => {
+			expect(response.text).toEqual(
+				expect.any(String)
+			);
+		});
+	}
+	)
 
-	// it("delete worker failed", async () => {
-	// 	return request
-	// 	.delete("/deleteworker")
-	// 	.set("authorization", token_user)
-	// 	.send({username:"test1"})
-	// 	.expect(401).then(response => {
-	// 		expect(response.text).toEqual(
-	// 			expect.any(String)
-	// 		);
-	// 	});
-	// }
-	// )
+	it("delete worker failed", async () => {
+		return request
+		.delete("/deleteworker")
+		.set("authorization", token_user)
+		.send({username:"test1"})
+		.expect(401).then(response => {
+			expect(response.text).toEqual(
+				expect.any(String)
+			);
+		});
+	}
+	)
 
-	// it("delete admin", async () => {
-	// 	return request
-	// 	.delete("/deleteadmin")
-	// 	.set("authorization", token_user)
-	// 	.send({username:"test23456"})
-	// 	.expect(200).then(response => {
-	// 		expect(response.text).toEqual(
-	// 			expect.any(String)
-	// 		);
-	// 	});
-	// }
-	// )
+	it("delete admin", async () => {
+		return request
+		.delete("/deleteadmin")
+		.set("authorization", token_user)
+		.send({username:"test23456"})
+		.expect(200).then(response => {
+			expect(response.text).toEqual(
+				expect.any(String)
+			);
+		});
+	}
+	)
 
-	// it("delete admin failed", async () => {
-	// 	return request
-	// 	.delete("/deleteadmin")
-	// 	.send({username:"test1"})
-	// 	.expect(401).then(response => {
-	// 		expect(response.text).toEqual(
-	// 			expect.any(String)
-	// 		);
-	// 	});
-	// }
-	// )
+	it("delete admin failed", async () => {
+		return request
+		.delete("/deleteadmin")
+		.send({username:"test1"})
+		.expect(401).then(response => {
+			expect(response.text).toEqual(
+				expect.any(String)
+			);
+		});
+	}
+	)
 
 
 });
