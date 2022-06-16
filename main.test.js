@@ -1,7 +1,7 @@
 const supertest = require('supertest');
 const request = supertest('http://localhost:3000');
 const token_user = 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QyMzQ1NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY1NTIxMzAxNCwiZXhwIjoxNjg2NzcwNjE0fQ.w5oNrOnrWjkYJdoHLj68rsAok3cMHgFycH1He2Ors3k";
-
+const token_worker = 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndvcmtlcjAyIiwicm9sZSI6IndvcmtlciIsImlhdCI6MTY1NTQwNjA1MCwiZXhwIjoxNjg2OTYzNjUwfQ.ftXHYju8BCaSF4RhasN3SFm2MvNkpTYeqGKiBU138Fo";
 
 
 describe('Express Route Test', function () {
