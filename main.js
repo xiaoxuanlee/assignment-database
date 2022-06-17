@@ -1,11 +1,11 @@
-const MongoClient = require("mongodb").MongoClient; //mongodb package
-const User = require("./user"); // link back to user.js
-const jwt = require("jsonwebtoken"); //jwt token package
-function generateAccessToken(payload) {		//generate token
+const MongoClient = require("mongodb").MongoClient;
+const User = require("./user");
+const jwt = require("jsonwebtoken");
+function generateAccessToken(payload) {
 	return jwt.sign(payload, "my-super-secret", {expiresIn: "1y"});
 }
 
-MongoClient.connect(		//connect to Mongodb
+MongoClient.connect(
 	// TODO: Connection 
 	"mongodb+srv://m001-student:m001-mongodb-basics@sandbox.3owbc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 	{ useNewUrlParser: true },
@@ -16,13 +16,13 @@ MongoClient.connect(		//connect to Mongodb
 	console.log('Connected to MongoDB');
 	User.injectDB(client);
 })
-const express = require('express') 	//express package
-const app = express()			// declare app
-const port = process.env.PORT || 3000	// declare port
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
 
-const swaggerUi = require('swagger-ui-express');	//swaggerui package
-const swaggerJsdoc = require('swagger-jsdoc');		//swaggerjsdoc package
-const option = {	//swaggerui 
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
+const option = {
 	definition: {
 		openapi: '3.0.0',
 		info: {
@@ -46,12 +46,12 @@ const option = {	//swaggerui
 	
 };
 const swaggerSpec = swaggerJsdoc(option);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));	//use swaggerui for code below this
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.use(express.json())		//use express for code below this
+app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-function authenticate(req, res, next) {		//authentication function
+function authenticate(req, res, next) {
 	const authHeader = req.headers['authorization'];
 	const token = authHeader && authHeader.split(' ')[1];
 	if (token == null) return res.sendStatus(401);
@@ -82,7 +82,7 @@ function authenticate(req, res, next) {		//authentication function
  *         description: User does not exist
  */
 
-app.get('/user/:id', async (req, res) => {	//display user details with user's username (Example: /user/user01)
+app.get('/user/:id', async (req, res) => {
 	const {id} = req.params;
 	const user = await User.getUser(id);
 	if (user != "User does not exist") {
@@ -264,8 +264,6 @@ app.post('/loginworker', async (req, res) => {
  *                 type: string
  *               password:
  *                 type: string
- *               role:
- *                 type: string
  *               phone:
  *                 type: string
  *               gender:
@@ -280,7 +278,7 @@ app.post('/registeradmin', async (req, res) => {
 	//console.log(req.body);
 	
 	
-	var user = await User.registeradmin(req.body.username, req.body.password,req.body.role,req.body.phone,req.body.gender);
+	var user = await User.registeradmin(req.body.username, req.body.password,req.body.phone,req.body.gender);
 		if(user != "false"){
 			res.status(200).json(user);
 			console.log(user);
@@ -313,8 +311,6 @@ app.post('/registeradmin', async (req, res) => {
  *                 type: string
  *               password:
  *                 type: string
- *               role:
- *                 type: string
  *               phone:
  *                 type: string
  *               gender:
@@ -331,7 +327,7 @@ app.post('/registeruser', async (req, res) => {
 	console.log(req.body);
 	
 	
-		var user = await User.registeruser(req.body.username, req.body.password,req.body.Membership_start,req.body.role,req.body.phone,req.body.gender);
+		var user = await User.registeruser(req.body.username, req.body.password,req.body.Membership_start,req.body.phone,req.body.gender);
 		if(user != "false")
 			res.status(200).json(user);
 		else
@@ -362,8 +358,6 @@ app.post('/registeruser', async (req, res) => {
  *                 type: string
  *               password:
  *                 type: string
- *               role:
- *                 type: string
  *               phone:
  *                 type: string
  *               gender:
@@ -379,7 +373,7 @@ app.post('/registerworker', async (req, res) => {
 	console.log(req.body);
 	
 	
-		var user = await User.registerworker(req.body.username, req.body.password,req.body.role,req.body.phone,req.body.gender);
+		var user = await User.registerworker(req.body.username, req.body.password,req.body.phone,req.body.gender);
 		if(user != "false")
 			res.status(200).json(user);
 		else
