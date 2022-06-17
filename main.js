@@ -1,11 +1,11 @@
-const MongoClient = require("mongodb").MongoClient;
-const User = require("./user");
-const jwt = require("jsonwebtoken");
-function generateAccessToken(payload) {
+const MongoClient = require("mongodb").MongoClient; //mongodb package
+const User = require("./user"); // link back to user.js
+const jwt = require("jsonwebtoken"); //jwt token package
+function generateAccessToken(payload) {		//generate token
 	return jwt.sign(payload, "my-super-secret", {expiresIn: "1y"});
 }
 
-MongoClient.connect(
+MongoClient.connect(		//connect to Mongodb
 	// TODO: Connection 
 	"mongodb+srv://m001-student:m001-mongodb-basics@sandbox.3owbc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 	{ useNewUrlParser: true },
@@ -16,13 +16,13 @@ MongoClient.connect(
 	console.log('Connected to MongoDB');
 	User.injectDB(client);
 })
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 3000
+const express = require('express') 	//express package
+const app = express()			// declare app
+const port = process.env.PORT || 3000	// declare port
 
-const swaggerUi = require('swagger-ui-express');
-const swaggerJsdoc = require('swagger-jsdoc');
-const option = {
+const swaggerUi = require('swagger-ui-express');	//swaggerui package
+const swaggerJsdoc = require('swagger-jsdoc');		//swaggerjsdoc package
+const option = {	//swaggerui 
 	definition: {
 		openapi: '3.0.0',
 		info: {
@@ -46,12 +46,12 @@ const option = {
 	
 };
 const swaggerSpec = swaggerJsdoc(option);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));	//use swaggerui for code below this
 
-app.use(express.json())
+app.use(express.json())		//use express for code below this
 app.use(express.urlencoded({ extended: false }))
 
-function authenticate(req, res, next) {
+function authenticate(req, res, next) {		//authentication function
 	const authHeader = req.headers['authorization'];
 	const token = authHeader && authHeader.split(' ')[1];
 	if (token == null) return res.sendStatus(401);
@@ -82,11 +82,15 @@ function authenticate(req, res, next) {
  *         description: User does not exist
  */
 
-app.get('/user/:id', async (req, res) => {
+app.get('/user/:id', async (req, res) => {	//display user details with user's username (Example: /user/user01)
 	const {id} = req.params;
 	const user = await User.getUser(id);
 	if (user != "User does not exist") {
-		res.status(200).json(user);
+		res.status(200).json([{
+			username: user[0].username,
+			role: user[0].role,
+			Membership_start: user[0].Membership_start
+		}]);
 	}
 	else {
 		res.status(401).send("User does not exist");
