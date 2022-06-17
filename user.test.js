@@ -16,7 +16,7 @@ describe("User Account", () => {
 	})
 
 	test("New user registration", async () => {
-		const res = await User.registeruser("test75", "test","01-01-2021","user","12345","Male");
+		const res = await User.registeruser("test75", "test","01-01-2021","12345","Male");
 		expect(res).toEqual(
 				expect.arrayContaining([
 					{   _id: res[0]._id,
@@ -32,7 +32,7 @@ describe("User Account", () => {
 	})
 
 	test("New admin registration", async () => {
-		const res = await User.registeradmin("test75", "test","admin","12345","Male");
+		const res = await User.registeradmin("test75", "test","12345","Male");
 		expect(res).toEqual(
 				expect.arrayContaining([
 					{   _id: res[0]._id,
@@ -48,7 +48,7 @@ describe("User Account", () => {
 	})
 
 	test("New worker registration", async () => {
-		const res = await User.registerworker("test75", "test","worker","12345","Male")
+		const res = await User.registerworker("test75", "test","12345","Male")
 		expect(res).toEqual(
 				expect.arrayContaining([
 					{   _id: res[0]._id,
@@ -64,17 +64,17 @@ describe("User Account", () => {
 	})
 
 	test("Duplicate user username", async () => {
-		const res = await User.registeruser("test75", "test")
+		const res = await User.registeruser("test75", "test","12345","Male")
 		expect(res).toBe("false")
 	})
 
 	test("Duplicate admin username", async () => {
-		const res = await User.registeradmin("test75", "test")
+		const res = await User.registeradmin("test75", "test","12345","Male")
 		expect(res).toBe("false")
 	})
 
 	test("Duplicate worker username", async () => {
-		const res = await User.registerworker("test75", "test")
+		const res = await User.registerworker("test75", "test","12345","Male")
 		expect(res).toBe("false")
 	})
 
