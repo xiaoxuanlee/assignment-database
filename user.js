@@ -13,7 +13,7 @@ class User {
     
 	static async registeruser(username,password,date,phone,gender) {
         
-		//TODO: Check if username exists
+		//Check if username exists
         const count = await users.find({"username": username}).count();
         if(count != 0) {
             console.log("Username already exists");
@@ -21,7 +21,7 @@ class User {
             return "false";
         }
 		else{    
-		// TODO: Hash password
+		//Hash password
 			
             const hashpassword = await bcrypt.hash(password, 10);
 			// let q;
@@ -32,14 +32,14 @@ class User {
 			console.log(date);
 			
             return (await users.find({"username": username}).toArray());
-		// TODO: Save user to database
+		// Register user to database
         
 	}
 
 }
 static async registeradmin(username,password,phone,gender) {
         
-	//TODO: Check if username exists
+	//Check if username exists
 	const count = await admins.find({"username": username}).count();
 	if(count != 0) {
 		console.log("Username already exists");
@@ -47,7 +47,7 @@ static async registeradmin(username,password,phone,gender) {
 		return "false";
 	}
 	else{    
-	// TODO: Hash password
+	//Hash password
 		
 		const hashpassword = await bcrypt.hash(password, 10);
 		// let q;
@@ -58,7 +58,7 @@ static async registeradmin(username,password,phone,gender) {
 		
 		
 		return (await admins.find({"username": username}).toArray());
-	// TODO: Save user to database
+	//Save admin to database
 	
 }
 
@@ -67,7 +67,7 @@ static async registeradmin(username,password,phone,gender) {
 
 static async registerworker(username,password,phone,gender) {
         
-	//TODO: Check if username exists
+	//Check if username exists
 	const count = await workers.find({"username": username}).count();
 	
 	if(count != 0) {
@@ -76,7 +76,7 @@ static async registerworker(username,password,phone,gender) {
 		return "false";
 	}
 	else{    
-	// TODO: Hash password
+	//Hash password
 		
 		const hashpassword = await bcrypt.hash(password, 10);
 		// let q;
@@ -87,16 +87,16 @@ static async registerworker(username,password,phone,gender) {
 		
 		
 		return (await workers.find({"username": username}).toArray());
-	// TODO: Save user to database
+	// Save worker to database
 	
 }
 
 }
 
 	static async loginuser(username, password) {
-		// TODO: Check if username exists
+		// Check if username exists
 		if(await users.find({"username": username}).count() == 1) {	
-		// TODO: Validate password
+		// Validate user's password
 			var result = await users.find({"username": username}).toArray();
 			var Obj = result.map(a => a.password);
 			if(bcrypt.compareSync(password,Obj.toString()) == true) {
@@ -118,7 +118,7 @@ static async registerworker(username,password,phone,gender) {
 			console.log("User does not exist");
 			return "false";
 		}
-		// TODO: Return user object
+		//Return user object
 		return;
 	}
 
@@ -144,14 +144,14 @@ static async registerworker(username,password,phone,gender) {
 			console.log("User does not exist");
 			return "false";
 		}
-		// TODO: Return user object
+		
 		return;
 	}
 
 	static async loginworker(username, password) {
-		// TODO: Check if username exists
+		// Check if worker's username exists
 		if(await workers.find({"username": username}).count() == 1) {	
-		// TODO: Validate password
+		//Validate worker's password
 			var result = await workers.find({"username": username}).toArray();
 			var Obj = result.map(a => a.password);
 			if(bcrypt.compareSync(password,Obj.toString()) == true) {
@@ -169,7 +169,7 @@ static async registerworker(username,password,phone,gender) {
 			console.log("User does not exist");
 			return "false";
 		}
-		// TODO: Return user object
+		// Return user object
 		return;
 	}
 
